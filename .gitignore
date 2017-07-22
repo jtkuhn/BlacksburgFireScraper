@@ -1,5 +1,9 @@
 # Ignore output files
 output/*
 
+# Ignore secrets
+secrets.py
+__pycache__/
+
 # Visual Studio 2015 cache options/directory
 .vs/
