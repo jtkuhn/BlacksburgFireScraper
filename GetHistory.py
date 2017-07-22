@@ -2,6 +2,7 @@ import os
 import tweepy
 from tweepy import OAuthHandler
 import RateLimitCheck
+import secrets
 
 twitter_account_name = 'blacksburgfire'
 count_per_api_call = 20
