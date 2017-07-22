@@ -10,9 +10,10 @@ def checkAllowedApiCalls():
     json.dump(jsonF, rlj);
     rlj.close();
 
-auth = OAuthHandler(secrets.consumer_key, secrets.consumer_secret)
-auth.set_access_token(secrets.access_token, secrets.access_token_secret)
+if __name__ == "__main__":
+    auth = OAuthHandler(secrets.consumer_key, secrets.consumer_secret)
+    auth.set_access_token(secrets.access_token, secrets.access_token_secret)
 
-api = tweepy.API(auth)
+    api = tweepy.API(auth)
 
-checkAllowedApiCalls()
+    checkAllowedApiCalls()
