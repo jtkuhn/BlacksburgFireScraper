@@ -23,6 +23,12 @@ def writeStatusesToFile(namedFile, statuses):
             namedFile.write(status.text)
             namedFile.write('\n')
 
+def createOutputDir():
+    try:
+        os.makedirs("output")
+    except OSError:
+        pass
+
 auth = OAuthHandler(secrets.consumer_key, secrets.consumer_secret)
 auth.set_access_token(secrets.access_token, secrets.access_token_secret)
 
@@ -31,6 +37,8 @@ api = tweepy.API(auth)
 userVar = api.get_user(twitter_account_name)
 status_count = userVar.statuses_count
 status_total_divided = (status_count / count_per_api_call) + 1
+
+createOutputDir()
 
 statusFile = open('output/StatusFile.txt', 'w+', errors='xmlcharrefreplace')
 statuses = api.user_timeline(twitter_account_name)
