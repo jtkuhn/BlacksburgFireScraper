@@ -9,7 +9,7 @@ count_per_api_call = 20
 def checkAllowedApiCalls():
     jsonF = api.rate_limit_status();
 
-    rlj = open('RateLimitJson.json', 'w+')
+    rlj = open('output/RateLimitJson.json', 'w+')
     json.dump(jsonF, rlj);
     rlj.close();
 
@@ -45,7 +45,7 @@ userVar = api.get_user(twitter_account_name)
 status_count = userVar.statuses_count
 status_total_divided = (status_count / count_per_api_call) + 1
 
-statusFile = open('StatusFile.json', 'w+', errors='xmlcharrefreplace')
+statusFile = open('output/StatusFile.json', 'w+', errors='xmlcharrefreplace')
 statuses = api.user_timeline(twitter_account_name)
 lowestId = getLowestStatusId(statuses)
 writeStatusesToJson(statusFile, statuses)

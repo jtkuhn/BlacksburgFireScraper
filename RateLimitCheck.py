@@ -5,7 +5,7 @@ from tweepy import OAuthHandler
 def checkAllowedApiCalls():
     jsonF = api.rate_limit_status();
 
-    rlj = open('RateLimitJson.json', 'w+')
+    rlj = open('output/RateLimitJson.json', 'w+')
     json.dump(jsonF, rlj);
     rlj.close();
 

@@ -1,9 +1,9 @@
 import re
 
-outfp = open('OutputFile.json', 'w+', errors='xmlcharrefreplace')
-rejectfp = open('RejectFile.json', 'w+', errors='xmlcharrefreplace')
+outfp = open('output/OutputFile.json', 'w+', errors='xmlcharrefreplace')
+rejectfp = open('output/RejectFile.json', 'w+', errors='xmlcharrefreplace')
 
-with open('StatusFile.json') as fp:
+with open('output/StatusFile.json') as fp:
     pattern = re.compile('\d{2,}')
     for line in fp:
         if pattern.search(line[0:7]):

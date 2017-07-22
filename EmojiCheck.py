@@ -5,7 +5,7 @@ from tweepy import OAuthHandler
 def checkAllowedApiCalls():
     jsonF = api.rate_limit_status();
 
-    rlj = open('RateLimitJson.json', 'w+')
+    rlj = open('output/RateLimitJson.json', 'w+')
     json.dump(jsonF, rlj);
     rlj.close();
 
@@ -21,7 +21,7 @@ api = tweepy.API(auth)
 
 
 
-emojiFile = open('EmojiFile.json', 'w+', errors='xmlcharrefreplace')
+emojiFile = open('output/EmojiFile.json', 'w+', errors='xmlcharrefreplace')
 
 status = api.get_status('840607860144787456')
 
