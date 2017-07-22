@@ -3,7 +3,7 @@ from tweepy import OAuthHandler
 import json
 import secrets
 
-def checkAllowedApiCalls():
+def checkAllowedApiCalls(api):
     jsonF = api.rate_limit_status();
 
     rlj = open('output/RateLimitJson.json', 'w+')
@@ -16,4 +16,4 @@ if __name__ == "__main__":
 
     api = tweepy.API(auth)
 
-    checkAllowedApiCalls()
+    checkAllowedApiCalls(api)

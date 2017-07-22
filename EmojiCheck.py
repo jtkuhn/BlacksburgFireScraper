@@ -2,14 +2,7 @@ import tweepy
 import json
 from tweepy import OAuthHandler
 import secrets
-
-def checkAllowedApiCalls():
-    jsonF = api.rate_limit_status();
-
-    rlj = open('output/RateLimitJson.json', 'w+')
-    json.dump(jsonF, rlj);
-    rlj.close();
-
+import RateLimitCheck
 
 auth = OAuthHandler(secrets.consumer_key, secrets.consumer_secret)
 auth.set_access_token(secrets.access_token, secrets.access_token_secret)
@@ -29,5 +22,5 @@ emojiFile.write('\n')
 
 
 
-checkAllowedApiCalls()
+RateLimitCheck.checkAllowedApiCalls(api)
 emojiFile.close()

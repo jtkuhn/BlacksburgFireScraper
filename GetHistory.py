@@ -2,16 +2,10 @@ import os
 import tweepy
 import json
 from tweepy import OAuthHandler
+import RateLimitCheck
 
 twitter_account_name = 'blacksburgfire'
 count_per_api_call = 20
-
-def checkAllowedApiCalls():
-    jsonF = api.rate_limit_status();
-
-    rlj = open('output/RateLimitJson.json', 'w+')
-    json.dump(jsonF, rlj);
-    rlj.close();
 
 def getLowestStatusId(tweets):
     try:
@@ -66,4 +60,4 @@ statusFile.close()
 
 
 
-checkAllowedApiCalls()
+RateLimitCheck.checkAllowedApiCalls(api)
