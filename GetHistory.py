@@ -29,15 +29,8 @@ def writeStatusesToJson(namedFile, statuses):
             namedFile.write(status.text)
             namedFile.write('\n')
 
-consumer_key = ''
-consumer_secret = ''
-access_token = ''
-access_token_secret = ''
-
-#============================================#
-
-auth = OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
+auth = OAuthHandler(secrets.consumer_key, secrets.consumer_secret)
+auth.set_access_token(secrets.access_token, secrets.access_token_secret)
 
 api = tweepy.API(auth)
 
