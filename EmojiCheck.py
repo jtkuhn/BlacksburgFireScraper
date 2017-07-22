@@ -1,5 +1,4 @@
 import tweepy
-import json
 from tweepy import OAuthHandler
 import secrets
 import RateLimitCheck
@@ -12,7 +11,7 @@ api = tweepy.API(auth)
 
 
 
-emojiFile = open('output/EmojiFile.json', 'w+', errors='xmlcharrefreplace')
+emojiFile = open('output/EmojiFile.txt', 'w+', errors='xmlcharrefreplace')
 
 status = api.get_status('840607860144787456')
 

@@ -1,6 +1,5 @@
 import os
 import tweepy
-import json
 from tweepy import OAuthHandler
 import RateLimitCheck
 
@@ -18,7 +17,7 @@ def getLowestStatusId(tweets):
     except:
         return -1
 
-def writeStatusesToJson(namedFile, statuses):
+def writeStatusesToFile(namedFile, statuses):
         for status in statuses:
             namedFile.write(status.text)
             namedFile.write('\n')
@@ -32,10 +31,10 @@ userVar = api.get_user(twitter_account_name)
 status_count = userVar.statuses_count
 status_total_divided = (status_count / count_per_api_call) + 1
 
-statusFile = open('output/StatusFile.json', 'w+', errors='xmlcharrefreplace')
+statusFile = open('output/StatusFile.txt', 'w+', errors='xmlcharrefreplace')
 statuses = api.user_timeline(twitter_account_name)
 lowestId = getLowestStatusId(statuses)
-writeStatusesToJson(statusFile, statuses)
+writeStatusesToFile(statusFile, statuses)
 
 
 index = 0
@@ -44,7 +43,7 @@ while index < status_total_divided:
     lowestId = getLowestStatusId(statuses)
     if lowestId == -1:
         break;
-    writeStatusesToJson(statusFile, statuses)
+    writeStatusesToFile(statusFile, statuses)
     index = index + 1
 
 
