@@ -1,5 +1,5 @@
 # Ignore output files
-output/*
+output/
 
 # Ignore secrets
 secrets.py
