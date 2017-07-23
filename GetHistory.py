@@ -68,4 +68,4 @@ statusFile.close()
 
 
 
-RateLimitCheck.checkAllowedApiCalls(api)
+RateLimitCheck.updateRateLimitJson(api)

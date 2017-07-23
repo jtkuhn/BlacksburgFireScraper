@@ -21,5 +21,5 @@ emojiFile.write('\n')
 
 
 
-RateLimitCheck.checkAllowedApiCalls(api)
+RateLimitCheck.updateRateLimitJson(api)
 emojiFile.close()
