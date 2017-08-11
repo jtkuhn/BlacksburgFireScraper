@@ -6,7 +6,7 @@ import secrets
 
 twitter_account_name = 'blacksburgfire'
 count_per_api_call = 20
-
+outputFilePath = "output/StatusFile.txt"
 
 def getLowestStatusId(tweets):
     try:
@@ -27,15 +27,21 @@ def writeStatusesToFile(namedFile, statuses):
 
 
 def createOutputDir():
-    try:
-        os.makedirs("output")
-    except OSError:
-        pass
+    if os.path.exists("output"):
+        return
+
+    os.makedirs("output")
+
+
+def getHistoryHasBeenRun():
+    if os.path.exists(outputFilePath):
+        return True
+    
+    return False
 
 
 def canRequestStatuses(numberOfRequests):
-	return RateLimitCheck.canRequestUserStatuses(api, numberOfRequests)
-
+    return RateLimitCheck.canRequestUserStatuses(api, numberOfRequests)
 
 print("Beginning execution", flush=True)
 auth = OAuthHandler(secrets.consumer_key, secrets.consumer_secret)
@@ -54,7 +60,7 @@ if not canRequestStatuses(status_requests):
 
 createOutputDir()
 
-statusFile = open('output/StatusFile.txt', 'w+', errors='xmlcharrefreplace')
+statusFile = open(outputFilePath, 'w+', errors='xmlcharrefreplace')
 
 print("Getting the first chunk of statuses", flush=True)
 statuses = api.user_timeline(twitter_account_name)
