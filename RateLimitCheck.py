@@ -14,11 +14,11 @@ def printVal(api):
 	jsonF = api.rate_limit_status();
 	print(jsonF["resources"]["statuses"]["/statuses/user_timeline"]["remaining"])
 
-def canRequestUserStatuses(api, number):
+def canRequestUserStatuses(api, numberOfRequests):
 	jsonF = api.rate_limit_status();
 	numberAllowed = jsonF["resources"]["statuses"]["/statuses/user_timeline"]["remaining"]
-	print("Asking if I can request " + str(number) + " statuses. I am allowed to request " + str(numberAllowed) + " statuses.\n")
-	if number < numberAllowed:
+	print("Asking if I can submit " + str(numberOfRequests) + " status requests. I am allowed to submit " + str(numberAllowed) + " .\n")
+	if numberOfRequests < numberAllowed:
 		return True
 	else:
 		return False

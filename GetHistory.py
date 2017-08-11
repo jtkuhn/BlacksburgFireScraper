@@ -33,8 +33,8 @@ def createOutputDir():
         pass
 
 
-def canRequestStatuses(number):
-	return RateLimitCheck.canRequestUserStatuses(api, number)
+def canRequestStatuses(numberOfRequests):
+	return RateLimitCheck.canRequestUserStatuses(api, numberOfRequests)
 
 
 print("Beginning execution", flush=True)
