@@ -79,11 +79,4 @@ print("Finished getting statuses")
 
 
 
-
-
-
-
-
-
-
 RateLimitCheck.updateRateLimitJson(api)

@@ -3,6 +3,7 @@ from tweepy import OAuthHandler
 import json
 import secrets
 
+
 def updateRateLimitJson(api):
     jsonF = api.rate_limit_status();
 
@@ -10,10 +11,12 @@ def updateRateLimitJson(api):
     json.dump(jsonF, rlj);
     rlj.close();
 
+	
 def printVal(api):
 	jsonF = api.rate_limit_status();
 	print(jsonF["resources"]["statuses"]["/statuses/user_timeline"]["remaining"])
 
+	
 def canRequestUserStatuses(api, numberOfRequests):
 	jsonF = api.rate_limit_status();
 	numberAllowed = jsonF["resources"]["statuses"]["/statuses/user_timeline"]["remaining"]
@@ -23,6 +26,7 @@ def canRequestUserStatuses(api, numberOfRequests):
 	else:
 		return False
 
+		
 if __name__ == "__main__":
     auth = OAuthHandler(secrets.consumer_key, secrets.consumer_secret)
     auth.set_access_token(secrets.access_token, secrets.access_token_secret)
