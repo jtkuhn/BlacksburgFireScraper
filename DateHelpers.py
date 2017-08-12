@@ -26,15 +26,3 @@ def getWeekdayNumeric(dateString):
 def getWeekdayEnglish(dateString):
     weekday = getWeekdayNumeric(dateString)
     return calendar.day_name[weekday]
-
-
-
-def testCases():
-    print("Should work: ")
-    print(getDatetime("5/2/17 8:03am"))
-    print("Should work: ")
-    print(getDatetime("5/2/2017 8:03pm"))
-    print("Should work: ")
-    print(getDatetime("05/02/17 20:03"))
-    print("Should work: ")
-    print(getDatetime("05/2/2017 20:03"))
