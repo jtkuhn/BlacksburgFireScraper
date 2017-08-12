@@ -1,9 +1,21 @@
 from datetime import datetime
 import calendar
 
+dateFormats = ["%m/%d/%y %H:%M", "%m/%d/%y %I:%M%p", "%m/%d/%Y %H:%M", "%m/%d/%Y %I:%M%p", "%m-%d-%y %H:%M"]
 
 def getDatetime(dateString):
-    return datetime.strptime(dateString, '%m/%d/%y %H:%M')
+    returnValue = None
+    parseTries = 0
+        
+    while returnValue == None and parseTries < len(dateFormats):
+        try:
+            returnValue = datetime.strptime(dateString, dateFormats[parseTries])
+        except ValueError:
+            pass
+            
+        parseTries += 1
+
+    return returnValue
 
 
 def getWeekdayNumeric(dateString):
@@ -14,3 +26,15 @@ def getWeekdayNumeric(dateString):
 def getWeekdayEnglish(dateString):
     weekday = getWeekdayNumeric(dateString)
     return calendar.day_name[weekday]
+
+
+
+def testCases():
+    print("Should work: ")
+    print(getDatetime("5/2/17 8:03am"))
+    print("Should work: ")
+    print(getDatetime("5/2/2017 8:03pm"))
+    print("Should work: ")
+    print(getDatetime("05/02/17 20:03"))
+    print("Should work: ")
+    print(getDatetime("05/2/2017 20:03"))
