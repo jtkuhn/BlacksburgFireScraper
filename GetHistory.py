@@ -8,6 +8,15 @@ twitter_account_name = 'blacksburgfire'
 count_per_api_call = 20
 outputFilePath = "output/StatusFile.txt"
 
+
+def getApi():
+    auth = OAuthHandler(secrets.consumer_key, secrets.consumer_secret)
+    auth.set_access_token(secrets.access_token, secrets.access_token_secret)
+
+    api = tweepy.API(auth)
+    return api
+
+
 def getLowestStatusId(tweets):
     try:
         lowest = tweets[0].id
@@ -44,10 +53,7 @@ def canRequestStatuses(numberOfRequests):
     return RateLimitCheck.canRequestUserStatuses(api, numberOfRequests)
 
 print("Beginning execution", flush=True)
-auth = OAuthHandler(secrets.consumer_key, secrets.consumer_secret)
-auth.set_access_token(secrets.access_token, secrets.access_token_secret)
-
-api = tweepy.API(auth)
+api = getApi()
 
 userVar = api.get_user(twitter_account_name)
 status_count = userVar.statuses_count
