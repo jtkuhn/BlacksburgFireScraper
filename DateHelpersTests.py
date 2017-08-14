@@ -28,6 +28,9 @@ class DateHelpersTests(unittest.TestCase):
     def test_weekdayParsing_works2(self):
         self.assertEqual(DateHelpers.getWeekdayEnglish("8/12/2017 10:16"), "Saturday")
         
+    def test_weekdayParsing_returnsNone_WhenInvalid1(self):
+        self.assertEqual(DateHelpers.getDatetime("5/5/5 5:5"), None)
+        
         
 if __name__ == "__main__":
     unittest.main() 
