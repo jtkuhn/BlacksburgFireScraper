@@ -19,9 +19,13 @@ def getDatetime(dateString):
 
 def getWeekdayNumeric(dateString):
     datetimeObject = getDatetime(dateString)
+    if datetimeObject == None:
+        return None
     return datetimeObject.weekday()
 
 
 def getWeekdayEnglish(dateString):
     weekday = getWeekdayNumeric(dateString)
+    if weekday == None:
+        return None
     return calendar.day_name[weekday]
