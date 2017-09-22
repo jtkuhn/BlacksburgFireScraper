@@ -1,6 +1,8 @@
 import re
 
 
+#This acts as the initial filter that separates tweets appearing to have dates from those without
+#Ideally, all tweets ending in the output file are parsable and all tweets send to the reject pile aren't.
 def filterResponses():
     containsManyDigitsPattern = '\d{3,}'
 
